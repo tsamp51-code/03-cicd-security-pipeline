@@ -1,0 +1,19 @@
+# Checkov configuration
+# Defines which checks to run and which to skip
+
+framework:
+  - terraform
+
+check:
+  - CKV_AWS_18   # S3 bucket logging
+  - CKV_AWS_19   # S3 bucket encryption
+  - CKV_AWS_20   # S3 bucket public access
+  - CKV_AWS_21   # S3 bucket versioning
+  - CKV_AWS_23   # Security group unrestricted ingress
+  - CKV_AWS_24   # Security group unrestricted SSH
+
+skip-check:
+  - CKV_AWS_144  # Skip cross-region replication (not needed for lab)
+
+soft-fail: false
+output: cli

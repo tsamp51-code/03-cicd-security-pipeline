@@ -1,0 +1,29 @@
+name: Container Security Scan
+
+on:
+  push:
+    paths:
+      - 'Dockerfile'
+      - 'docker-compose*.yml'
+  pull_request:
+    paths:
+      - 'Dockerfile'
+
+jobs:
+  trivy-scan:
+    name: Trivy Container Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t test-image:latest .
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: test-image:latest
+          format: table
+          exit-code: 1
+          severity: CRITICAL,HIGH
