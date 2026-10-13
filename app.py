@@ -5,7 +5,7 @@ import sqlite3
 # BAD: Hardcoded secret - secret scanner should catch this
 API_KEY = "AKIAIOSFODNN7EXAMPLEKEY123456"
 DB_PASSWORD = "supersecretpassword123"
-
+ANOTHER_SECRET = "ghp_realtoken123456789abcdef"
 def get_user(username):
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
