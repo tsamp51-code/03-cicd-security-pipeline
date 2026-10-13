@@ -1,3 +1,4 @@
+# Security scan test
 import subprocess
 import sqlite3
 
